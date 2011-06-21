@@ -57,7 +57,10 @@ class WiFlyDevice {
     boolean enterCommandMode(boolean isAfterBoot = false);
     boolean softwareReboot(boolean isAfterBoot);
     boolean hardwareReboot();
-
+    
+    
+    boolean val;
+    
     friend class Client;
     friend class Server;
 };

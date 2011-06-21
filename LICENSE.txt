@@ -13,3 +13,10 @@ AUTHORS
 
  * Chris Taylor (Original autoconnect sketch and tutorial)
  * Philip J. Lindsay (Conversion to library)
+ 
+ 
+ 
+ 
+ 
+ Additional Development
+ * Scott Haselton

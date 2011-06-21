@@ -15,6 +15,7 @@ void SpiDevice::begin() {
     
    */
   begin(SS);
+  
 }
 
 
@@ -22,9 +23,11 @@ void SpiDevice::begin(byte selectPin) {
   /*
    */
   _selectPin = selectPin;      
-  _initPins();
-  _initSpi();
+ // _initPins();
+ // _initSpi();
+  
 }
+
 
 
 void SpiDevice::_initPins() {
@@ -51,7 +54,7 @@ void SpiDevice::_initSpi() {
    */
 
   SPCR = (1<<SPE)|(1<<MSTR)|(1<<SPR1)|(1<<SPR0);
-
+  Serial.println(SPCR);
 #if 0
   // This approach is not specified in the datasheet so I'm trying without.
   char clr = 0;

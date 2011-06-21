@@ -24,7 +24,6 @@ class SpiDevice {
 
     byte transfer(volatile byte data);
     void transfer_bulk(const uint8_t* srcptr, unsigned long int length);
-
     
   private:
     void _initPins();

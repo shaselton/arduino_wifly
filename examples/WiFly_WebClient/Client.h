@@ -28,7 +28,8 @@ class Client : public Print {
 
   bool connected();
   void stop();
-
+  void start();
+  bool active();
   operator bool();
 
  private:
@@ -38,7 +39,6 @@ class Client : public Print {
   uint16_t _port;
 
   const char *_domain;
-
   bool isOpen;
 
   ParsedStream stream;

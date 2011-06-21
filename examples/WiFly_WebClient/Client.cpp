@@ -57,19 +57,64 @@ void Client::write(const uint8_t *buffer, size_t size) {
 }
 
 
-boolean Client::connect() {
-  /*
+void Client::start(){
+    /*
    */
-   Serial.println('1');
 
   // Handle case when Null object returned from Server.available()
   if (!this) {
-       Serial.println('2');
+    return;
+  }
+
+  // TODO: Implement this better
+  stream.reset();
+ // println(_ip);
+  println(_domain);
+  if ((_ip == NULL) && (_domain == NULL)) {
+    // This is a connection started by the Server class
+    // so the connection is already established.
+  } else {
+    // TODO: Track state more?
+    Serial.println(_domain);
+    _WiFly.enterCommandMode();
+    _WiFly.sendCommand("open ", true, "" /* TODO: Remove this dummy value */);
+    if (_ip != NULL) {
+      for (int index = 0; /* break inside loop*/ ; index++) {
+	_WiFly.uart.print(_ip[index], DEC);
+	if (index == 3) {
+	  break;
+	}
+	_WiFly.uart.print('.');
+      }
+    } else if (_domain != NULL) {
+      _WiFly.uart.print(_domain);
+    } else {
+      while (1) {
+	// This should never happen
+      }
+    }
+    
+    _WiFly.uart.print(" ");
+    _WiFly.uart.print(_port, DEC);
+    /* UNCOMMENT */
+    _WiFly.sendCommand("", false, "*OPEN*");
+   
+    // TODO: Handle connect failure
+  }
+  isOpen = true;
+
+}
+
+boolean Client::connect() {
+  /*
+   */
+
+  // Handle case when Null object returned from Server.available()
+  if (!this) {
     return false;
   }
 
   // TODO: Implement this better
-       Serial.println('3');
   stream.reset();
 
   if ((_ip == NULL) && (_domain == NULL)) {

@@ -1,7 +1,7 @@
 
 #include "WiFly.h"
 
-#define DEBUG_LEVEL 2
+#define DEBUG_LEVEL 5
 
 #include "Debug.h"
 
@@ -250,6 +250,7 @@ boolean WiFlyDevice::softwareReboot(boolean isAfterBoot = true) {
 boolean WiFlyDevice::hardwareReboot() {
   /*
    */
+  
   uart.ioSetDirection(0b00000010);
   uart.ioSetState(0b00000000);
   delay(1);
